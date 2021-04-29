@@ -28,7 +28,6 @@ const item3 = new Item ({
 
 const defaultItems = [item1,item2,item3];
 
-
 app.get("/", function(req, res){
   Item.find({},function(err,foundItems) {
     if(foundItems.length == 0) {
@@ -44,7 +43,6 @@ res.redirect("/");
     }
   });
   
-
   let today = new Date();    
   let options={
     month:"long",
@@ -55,7 +53,6 @@ res.redirect("/");
   let day = today.toLocaleDateString("en-US",options);
 });
 
-
 app.post("/",function(req,res){
  const itemName =req.body.newItem;
   const item = new Item ({
@@ -64,7 +61,6 @@ app.post("/",function(req,res){
   item.save();
   res.redirect("/");
 });
-
 
 app.post('/delete',function(req,res){
  const checkedId = req.body.noyItem;
