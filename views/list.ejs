@@ -12,15 +12,18 @@
         <h1><%= Date %></h1>
     </div>
 
-    <div class="box">
-            
-            <% for (let i=0; i<listNewItem.length; i++) {  %>
-                <div class="item">
-                    <input type="checkbox">
-                    <p> <%= listNewItem[i] %> </p> 
+    <div class="box"           
+                <%  listNewItem.forEach(function(item) { %>
+                    <form action="/delete" method="POST">
+                    <div class="item">
+                        <input type="checkbox" name="noyItem" value="<%=item._id%>" onchange="this.form.submit()">
+                    <p> <%= item.name %> </p> 
                 </div>
+            </form>
+
+                    <%  })  %>
                    
-                <%  }   %>  
+                 
                 <form class="item"  action="/"  method="POST">
                     <input type="text" name="newItem" placeholder="New Item" autocomplete="off" >
                     <button type="submit" name="button">+</button>
